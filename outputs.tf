@@ -23,3 +23,6 @@ output "minio_target_user" {
 output "minio_tls_cert" {
   value = try([for cert in data.tls_certificate.minio_tls.certificates : cert if cert.is_ca].0.cert_pem, data.tls_certificate.minio_tls.certificates.0.cert_pem, null)
 }
+output "minio_url" {
+  value = var.minio_url
+}
