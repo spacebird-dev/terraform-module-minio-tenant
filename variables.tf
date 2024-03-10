@@ -21,7 +21,7 @@ variable "user_tags" {
 }
 
 variable "minio_url" {
-  description = "Full URL to the minio API. If set, the module will populate additional outputs, such as minio_tls_cert for convenience"
+  description = "Full URL to the minio API, with http:// or https:// prefix. If set, the module will populate additional outputs, such as minio_tls_cert for convenience"
   type        = string
   default     = ""
 }
