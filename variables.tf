@@ -19,3 +19,9 @@ variable "user_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "minio_url" {
+  description = "Full URL to the minio API. If set, the module will populate additional outputs, such as minio_tls_cert for convenience"
+  type        = string
+  default     = ""
+}
