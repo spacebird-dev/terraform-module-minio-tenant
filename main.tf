@@ -32,7 +32,7 @@ resource "minio_iam_user_policy_attachment" "name" {
 }
 
 resource "minio_iam_service_account" "name" {
-  target_user = var.tenant_name
+  target_user = minio_iam_user.tenant.name
 }
 
 resource "minio_s3_bucket" "tenant" {
