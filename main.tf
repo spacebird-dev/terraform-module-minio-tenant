@@ -2,8 +2,13 @@ locals {
   bucket_name = "${var.bucket_prefix}${var.tenant_name}"
 }
 
+resource "random_string" "user_postfix" {
+  length  = 8
+  special = false
+}
+
 resource "minio_iam_user" "tenant" {
-  name          = var.tenant_name
+  name          = "${var.tenant_name}-${random_string.user_postfix.result}"
   force_destroy = true
   tags          = var.user_tags
 }
