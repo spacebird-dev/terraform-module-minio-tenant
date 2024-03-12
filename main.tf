@@ -44,9 +44,3 @@ resource "minio_s3_bucket" "tenant" {
   bucket        = local.bucket_name
   force_destroy = var.bucket_force_destroy
 }
-
-data "tls_certificate" "minio_tls" {
-  count        = length(var.minio_url) > 0 ? 1 : 0
-  verify_chain = false
-  url          = var.minio_url
-}

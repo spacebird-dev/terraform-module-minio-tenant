@@ -25,12 +25,3 @@ output "user" {
   value       = minio_iam_user.tenant.name
   description = "The name of the user created in minio that owns the access key"
 }
-
-output "minio_tls_cert" {
-  value       = try([for cert in data.tls_certificate.minio_tls.0.certificates : cert if cert.is_ca].0.cert_pem, data.tls_certificate.minio_tls.0.certificates.0.cert_pem, null)
-  description = "TLS certificate used by the Minio endpooint to authenticate itself"
-}
-output "minio_endpoint" {
-  value       = var.minio_url
-  description = "Endpoint URL of the Minio instance"
-}
