@@ -25,3 +25,12 @@ output "user" {
   value       = minio_iam_user.tenant.name
   description = "The name of the user created in minio that owns the access key"
 }
+output "credentials_file" {
+  value       = <<EOF
+[default]
+aws_access_key_id=${minio_iam_service_account.name.access_key}
+aws_secret_access_key=${minio_iam_service_account.name.secret_key}
+EOF
+  description = "aws-config style file containing the credentials under the default profile"
+  sensitive   = true
+}
